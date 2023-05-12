@@ -121,3 +121,21 @@
               (cond
                 ((listp p) (decode-one (element-at p 2) (element-at p 1)))
                 (t (decode-one p 1)))) ls))
+
+; problem 13
+
+
+(defun encode-direct-helper (ls cur n)
+  (cond
+    ((equal ls nil) (list (list n cur)))
+    ((equal (car ls) cur) (encode-direct-helper (cdr ls) cur (+ n 1)))
+    ((> n 1) (cons (list n cur) (encode-direct-helper (cdr ls) (car ls) 1)))
+    (t (cons cur (encode-direct-helper (cdr ls) (car ls) 1)))
+    ))
+
+(defun encode-direct (ls)
+  (cond
+    ((equal ls nil) nil)
+    (t (encode-direct-helper (cdr ls) (car ls) 1))))
+
+; problem 14
