@@ -173,3 +173,11 @@
          (cons (cons (car ls) (car res)) (cdr res))))))
 
 
+; problem 18
+
+(defun slice (ls from to)
+  (cond
+    ((equal to 0) nil)
+    ((<= from 1) (cons (car ls) (slice (cdr ls) (- from 1) (- to 1))))
+    (t (slice (cdr ls) (- from 1) (- to 1)))))
+
