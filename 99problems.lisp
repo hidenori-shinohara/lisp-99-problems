@@ -196,3 +196,9 @@
 
 
 
+; problem 20
+
+(defun remove-at (ls n)
+  (cond
+    ((equal n 1) (cdr ls))
+    (t (cons (car ls) (remove-at (cdr ls) (- n 1))))))
