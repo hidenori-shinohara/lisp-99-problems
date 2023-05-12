@@ -102,3 +102,22 @@
                 ((eq (car p) 1) (car (cdr p)))
                 (t p))) (encode ls)))
 
+
+; problem 12
+
+(defun decode-one-helper (x n acc)
+  (cond
+    ((eq n 0) acc)
+    (t (decode-one-helper x (- n 1) (cons x acc)))
+    )
+  )
+
+(defun decode-one (x n)
+  (decode-one-helper x n nil))
+
+
+(defun decode (ls)
+  (mapcar #'(lambda (p)
+              (cond
+                ((listp p) (decode-one (element-at p 2) (element-at p 1)))
+                (t (decode-one p 1)))) ls))
