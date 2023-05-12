@@ -181,3 +181,18 @@
     ((<= from 1) (cons (car ls) (slice (cdr ls) (- from 1) (- to 1))))
     (t (slice (cdr ls) (- from 1) (- to 1)))))
 
+; problem 19
+
+(defun rotate (ls n)
+  (cond
+    ((< n 1) (rotate ls (+ n (length ls))))
+    ((> n (length ls)) (rotate ls (- n (length ls))))
+    (t (let ((splitlist (split ls n)))
+         (let
+             ((front (element-at splitlist 1))
+              (back (element-at splitlist 2)))
+             (append back front))))))
+
+
+
+
