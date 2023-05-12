@@ -91,5 +91,14 @@
 ; problem 10
 
 (defun encode (ls)
-  (mapcar #'(lambda (x) (cons (length x) (car x))) (pack ls)))
+  (mapcar #'(lambda (x) (list (length x) (car x))) (pack ls)))
+
+
+; problem 11
+
+(defun encode-modified (ls)
+  (mapcar #'(lambda (p)
+              (cond
+                ((eq (car p) 1) (car (cdr p)))
+                (t p))) (encode ls)))
 
