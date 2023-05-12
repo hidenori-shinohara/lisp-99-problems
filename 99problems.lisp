@@ -139,3 +139,37 @@
     (t (encode-direct-helper (cdr ls) (car ls) 1))))
 
 ; problem 14
+
+(defun dupli (ls)
+  (cond
+    ((equal ls nil) nil)
+    (t (cons (car ls) (cons (car ls) (dupli (cdr ls)))))))
+
+; problem 15
+
+(defun repli (ls n)
+  (cond
+    ((equal ls nil) nil)
+    (t (append (decode-one (car ls) n) (repli (cdr ls) n)))))
+
+
+; problem 16
+
+(defun drop-helper (ls n cur)
+  (cond
+    ((equal ls nil) nil)
+    ((equal n cur) (drop-helper (cdr ls) n 1))
+    (t (cons (car ls) (drop-helper (cdr ls) n (+ 1 cur))))))
+
+(defun drop (ls n)
+  (drop-helper ls n 1))
+
+; problem 17
+
+(defun split (ls n)
+  (cond
+    ((equal n 0) (list nil ls))
+    (t (let ((res (split (cdr ls) (- n 1))))
+         (cons (cons (car ls) (car res)) (cdr res))))))
+
+
