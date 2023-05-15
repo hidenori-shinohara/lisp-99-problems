@@ -227,3 +227,16 @@
 
 (defun lotto-select (n m)
   (rnd-select (range 1 m) n))
+
+; problem 25
+
+(defun rnd-permu-helper (ls acc inds)
+  (cond
+    ((eq (length inds) 0) acc)
+    (t (let ((indinds (+ (random (length inds)) 1)))
+             (rnd-permu-helper ls (cons (element-at ls (element-at inds indinds)) acc) (remove-at inds indinds))))))
+
+; 
+
+(defun rnd-permu (ls)
+  (rnd-permu-helper ls nil (range 1 (length ls))))
