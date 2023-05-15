@@ -240,3 +240,14 @@
 
 (defun rnd-permu (ls)
   (rnd-permu-helper ls nil (range 1 (length ls))))
+
+; problem 26
+
+(defun combination (n ls)
+  (cond
+    ((equal n 0) (cons nil nil))
+    ((> n (length ls)) nil)
+    (t (let ((rec1 (combination n (cdr ls)))
+             (rec2 (combination (- n 1) (cdr ls))))
+         (append rec1 (mapcar (lambda (partial) (cons (car ls) partial)) rec2))))))
+
