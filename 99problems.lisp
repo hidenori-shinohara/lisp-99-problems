@@ -222,3 +222,8 @@
     ((equal ls nil) nil)
     ((< (random (length ls)) n) (cons (car ls) (rnd-select (cdr ls) (- n 1))))
     (t (rnd-select (cdr ls) n))))
+
+; problem 24
+
+(defun lotto-select (n m)
+  (rnd-select (range 1 m) n))
