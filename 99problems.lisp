@@ -207,3 +207,18 @@
   (cond
     ((equal ind 1) (cons elem ls))
     (t (cons (car ls) (insert-at elem (cdr ls) (- ind 1))))))
+
+; problem 22
+
+(defun range (from to)
+  (cond
+    ((> from to) nil)
+    (t (cons from (range (+ from 1) to)))))
+
+; problem 23
+
+(defun rnd-select (ls n)
+  (cond
+    ((equal ls nil) nil)
+    ((< (random (length ls)) n) (cons (car ls) (rnd-select (cdr ls) (- n 1))))
+    (t (rnd-select (cdr ls) n))))
