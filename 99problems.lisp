@@ -194,11 +194,16 @@
              (append back front))))))
 
 
-
-
 ; problem 20
 
 (defun remove-at (ls n)
   (cond
     ((equal n 1) (cdr ls))
     (t (cons (car ls) (remove-at (cdr ls) (- n 1))))))
+
+; problem 21
+
+(defun insert-at (elem ls ind)
+  (cond
+    ((equal ind 1) (cons elem ls))
+    (t (cons (car ls) (insert-at elem (cdr ls) (- ind 1))))))
